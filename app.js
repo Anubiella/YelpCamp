@@ -18,7 +18,12 @@ let User = require('./models/user');
 
 //DB SECTION
 //seedDB();  Seeds the DB
-mongoose.connect('mongodb://localhost/yelp_camp');
+
+//previous local DB connection
+//mongoose.connect('mongodb://localhost/yelp_camp');
+
+//heroku deployment DB
+mongoose.connect('mongodb://tester:herahora@ds213688.mlab.com:13688/yelpcamp_furno');
 
 //GENERAL APP SETUP
 app.use(bodyParser.urlencoded({extended: true}));
