@@ -18,9 +18,9 @@ let User = require('./models/user');
 
 
 ////////////////////DB SECTION///////////////////////
-//seedDB();  Seeds the DB
 
-mongoose.connect(process.env.DATABASEURL);
+let dbUrl = process.env.DATABASEURL|| 'mongodb://localhost/yelp_camp';
+mongoose.connect(dbUrl);
 
 
 //GENERAL APP SETUP
