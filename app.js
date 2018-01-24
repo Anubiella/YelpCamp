@@ -16,14 +16,12 @@ let Campground = require('./models/campground');
 let Comment = require('./models/comment');
 let User = require('./models/user');
 
-//DB SECTION
+
+////////////////////DB SECTION///////////////////////
 //seedDB();  Seeds the DB
 
-//previous local DB connection
-//mongoose.connect('mongodb://localhost/yelp_camp');
+mongoose.connect(process.env.DATABASEURL);
 
-//heroku deployment DB
-mongoose.connect('mongodb://tester:herahora@ds213688.mlab.com:13688/yelpcamp_furno');
 
 //GENERAL APP SETUP
 app.use(bodyParser.urlencoded({extended: true}));
