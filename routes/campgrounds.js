@@ -75,7 +75,11 @@ router.get('/campgrounds/:id/edit', middleware.checkCampOwnership, (req, res)=>{
 });
 
 router.put('/campgrounds/:id', (req, res)=>{
-  geocoder.geocode(req.body.location, function (err, data) {
+  let rawLocation = req.body.campground.location;
+  geocoder.geocode(rawLocation, function (err, data) {
+      if (err) {
+        return res.redirect('back');
+      }
       var lat = data.results[0].geometry.location.lat;
       var lng = data.results[0].geometry.location.lng;
       var location = data.results[0].formatted_address;
