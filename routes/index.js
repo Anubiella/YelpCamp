@@ -12,15 +12,14 @@ router.get('/', (req,res)=>{
 ///////////////AUTH ROUTES/////////////
 
 router.get('/register', (req, res)=>{
-  res.render('register');
+  res.render('register', {page: 'register'});
 });
 
 router.post('/register', (req, res)=>{
   User.register(new User({_id: new mongoose.Types.ObjectId(), username: req.body.username}), req.body.password, (err, user)=>{
     if (err) {
       console.log(err);
-      req.flash('error', 'Database issue, please try later');
-      res.redirect('back');
+      return res.render("register", {error: err.message});
     } else {
       passport.authenticate('local')(req, res, ()=>{
         req.flash('success', 'User signed up successfully');
@@ -31,7 +30,7 @@ router.post('/register', (req, res)=>{
 });
 
 router.get('/login', (req, res)=>{
-  res.render('login');
+  res.render('login', {page: 'login'});
 })
 
 router.post('/login', passport.authenticate('local', {
