@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const localStrategy = require('passport-local');
 const flash = require('connect-flash');
 
+
 //EXTERNAL FILES REQUIRED
 let campgroundsRoutes = require('./routes/campgrounds');
 let commentsRoutes = require('./routes/comments');
